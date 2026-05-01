@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-contrast="normal">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ElectionGuide AI — Your Smart Guide to Democracy</title>
+  <meta name="description" content="ElectionGuide AI is an intelligent, AI-powered assistant that helps citizens understand the election process, check voter eligibility, and learn about democratic rights." />
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#FF9933" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="ElectionGuide" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="ElectionGuide AI — Your Smart Guide to Democracy" />
+  <meta property="og:description" content="An AI-powered assistant helping citizens understand elections, check eligibility, and exercise their democratic rights." />
+  <meta property="og:type" content="website" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="icons/icon-192.png" type="image/png" />
+
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- ─── Navigation ─────────────────────────────────────────── -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <a href="#" class="nav-brand" aria-label="ElectionGuide AI Home">
+        <span class="nav-brand-icon" aria-hidden="true">🗳️</span>
+        <span>Election<span class="gradient-text">Guide</span></span>
+      </a>
+
+      <div class="nav-links" role="menubar">
+        <a href="#hero" role="menuitem">Home</a>
+        <a href="#timeline" role="menuitem">Timeline</a>
+        <a href="#eligibility" role="menuitem">Eligibility</a>
+        <a href="#chat" role="menuitem">Ask AI</a>
+        <a href="#faq" role="menuitem">FAQ</a>
+      </div>
+
+      <div class="nav-actions">
+        <!-- Mode Toggle -->
+        <div class="mode-switch" title="Switch between Demo and Live AI mode">
+          <label class="toggle-wrapper" for="mode-toggle">
+            <input type="checkbox" id="mode-toggle" />
+            <span class="toggle-slider"></span>
+          </label>
+          <span class="mode-label" id="mode-label">🔵 Demo</span>
+        </div>
+
+        <button class="btn-icon" id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light theme">☀️</button>
+
+        <!-- Login Action -->
+        <div id="auth-section">
+          <button class="btn btn-secondary" onclick="simulateLogin()" style="display: flex; align-items: center; gap: 8px; border-color: var(--saffron); color: var(--saffron);">
+            <span style="font-size: 1.1rem;">👤</span>
+            Demo Login
+          </button>
+        </div>
+        
+        <div id="user-section" style="display:none;">
+          <button class="user-pill" onclick="signOut()" title="Sign out">
+            <img id="user-avatar" src="" alt="" class="user-avatar-img" />
+            <span id="user-name"></span>
+          </button>
+        </div>
+      </div>
+
+      <button class="hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main id="main">
+
+    <!-- ─── Hero Section ───────────────────────────────────────── -->
+    <section class="hero" id="hero">
+      <div class="orb orb-1" aria-hidden="true"></div>
+      <div class="orb orb-2" aria-hidden="true"></div>
+      <div class="orb orb-3" aria-hidden="true"></div>
+
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="pulse-dot"></span>
+            AI-Powered Election Assistant
+          </div>
+
+          <h1>Understand Your <span class="gradient-text">Democracy</span> Like Never Before</h1>
+
+          <p class="hero-subtitle">
+            ElectionGuide AI empowers citizens with knowledge about the election process, voter eligibility, and democratic rights — powered by Google Gemini.
+          </p>
+
+          <div class="hero-cta">
+            <a href="#chat" class="btn btn-primary">💬 Ask the AI</a>
+            <a href="#eligibility" class="btn btn-secondary">✅ Check Eligibility</a>
+          </div>
+
+          <!-- Voter Dashboard (Visible after login) -->
+          <div id="voter-dashboard" class="voter-dashboard glass">
+            <div class="dash-header">
+              <span class="dash-title">👋 Welcome back, <span id="dash-user-name">Voter</span></span>
+              <span class="dash-badge">Registered Citizen</span>
+            </div>
+            <div class="dash-grid">
+              <div class="dash-stat">
+                <div class="dash-stat-icon">✅</div>
+                <div class="dash-stat-info">
+                  <div class="dash-stat-label">Eligibility</div>
+                  <div class="dash-stat-value">Verified</div>
+                </div>
+              </div>
+              <div class="dash-stat">
+                <div class="dash-stat-icon">📜</div>
+                <div class="dash-stat-info">
+                  <div class="dash-stat-label">Voter Guide</div>
+                  <div class="dash-stat-value">Explored</div>
+                </div>
+              </div>
+              <div class="dash-stat">
+                <div class="dash-stat-icon">📊</div>
+                <div class="dash-stat-info">
+                  <div class="dash-stat-label">Readiness</div>
+                  <div class="dash-stat-value">100%</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <div class="hero-stat-value">10+</div>
+              <div class="hero-stat-label">Topics Covered</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-value">24/7</div>
+              <div class="hero-stat-label">AI Availability</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-value">100%</div>
+              <div class="hero-stat-label">Non-Partisan</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Timeline Section ───────────────────────────────────── -->
+    <section class="timeline-section" id="timeline">
+      <div class="container">
+        <div class="reveal" style="text-align:center;">
+          <span class="section-label">How Elections Work</span>
+          <h2>The <span class="gradient-text">Election Journey</span></h2>
+          <p style="color:var(--text-secondary); max-width:560px; margin:var(--space-sm) auto 0; font-size:0.92rem;">
+            From announcement to results — follow every step of the democratic process.
+          </p>
+        </div>
+
+        <div class="timeline reveal">
+          <div class="timeline-item" data-phase="pre">
+            <div class="timeline-marker">1</div>
+            <div class="timeline-card glass" tabindex="0" role="button" aria-expanded="false">
+              <div class="timeline-card-header">
+                <div class="timeline-card-title">
+                  <span class="timeline-card-icon" aria-hidden="true">📢</span>
+                  <h3>Election Announcement</h3>
+                </div>
+                <span class="phase-label" data-phase="pre">Pre-Election</span>
+                <span class="timeline-expand-icon" aria-hidden="true">▼</span>
+              </div>
+              <p class="timeline-card-subtitle">The Election Commission announces dates and sets the process in motion.</p>
+              <div class="timeline-card-body">
+                <p>The Election Commission of India announces the election schedule, including nomination deadlines, polling dates, and counting day. The Model Code of Conduct comes into effect immediately.</p>
+                <ul>
+                  <li>Schedule notification by Election Commission</li>
+                  <li>Model Code of Conduct enforced</li>
+                  <li>Voter rolls finalized</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item" data-phase="pre">
+            <div class="timeline-marker">2</div>
+            <div class="timeline-card glass" tabindex="0" role="button" aria-expanded="false">
+              <div class="timeline-card-header">
+                <div class="timeline-card-title">
+                  <span class="timeline-card-icon" aria-hidden="true">📝</span>
+                  <h3>Nomination Filing</h3>
+                </div>
+                <span class="phase-label" data-phase="pre">Pre-Election</span>
+                <span class="timeline-expand-icon" aria-hidden="true">▼</span>
+              </div>
+              <p class="timeline-card-subtitle">Candidates file nominations and undergo scrutiny.</p>
+              <div class="timeline-card-body">
+                <p>Aspiring candidates submit their nomination papers along with a security deposit. These are scrutinized by the Returning Officer. Candidates may withdraw within a specified period.</p>
+                <ul>
+                  <li>Filing of nomination papers</li>
+                  <li>Scrutiny by Returning Officer</li>
+                  <li>Withdrawal period for candidates</li>
+                  <li>Final list of contesting candidates</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item" data-phase="campaign">
+            <div class="timeline-marker">3</div>
+            <div class="timeline-card glass" tabindex="0" role="button" aria-expanded="false">
+              <div class="timeline-card-header">
+                <div class="timeline-card-title">
+                  <span class="timeline-card-icon" aria-hidden="true">📣</span>
+                  <h3>Election Campaigning</h3>
+                </div>
+                <span class="phase-label" data-phase="campaign">Campaign</span>
+                <span class="timeline-expand-icon" aria-hidden="true">▼</span>
+              </div>
+              <p class="timeline-card-subtitle">Parties and candidates reach out to voters.</p>
+              <div class="timeline-card-body">
+                <p>Political parties and candidates campaign through rallies, advertisements, door-to-door outreach, and social media. Campaigning must stop 48 hours before polling — the "silence period."</p>
+                <ul>
+                  <li>Public rallies and roadshows</li>
+                  <li>Media advertisements and debates</li>
+                  <li>Social media campaigns</li>
+                  <li>Campaigning ends 48 hours before polls</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item" data-phase="vote">
+            <div class="timeline-marker">4</div>
+            <div class="timeline-card glass" tabindex="0" role="button" aria-expanded="false">
+              <div class="timeline-card-header">
+                <div class="timeline-card-title">
+                  <span class="timeline-card-icon" aria-hidden="true">🗳️</span>
+                  <h3>Polling Day</h3>
+                </div>
+                <span class="phase-label" data-phase="vote">Voting</span>
+                <span class="timeline-expand-icon" aria-hidden="true">▼</span>
+              </div>
+              <p class="timeline-card-subtitle">Citizens exercise their right to vote using EVMs.</p>
+              <div class="timeline-card-body">
+                <p>Voters go to their assigned polling booths, verify identity, and cast votes using Electronic Voting Machines (EVMs) with VVPAT verification. The process is monitored by election officials and observers.</p>
+                <ul>
+                  <li>Voter identity verification at polling booth</li>
+                  <li>Voting via EVM with VVPAT slip</li>
+                  <li>Indelible ink applied to prevent fraud</li>
+                  <li>NOTA option available for all voters</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item" data-phase="post">
+            <div class="timeline-marker">5</div>
+            <div class="timeline-card glass" tabindex="0" role="button" aria-expanded="false">
+              <div class="timeline-card-header">
+                <div class="timeline-card-title">
+                  <span class="timeline-card-icon" aria-hidden="true">📊</span>
+                  <h3>Counting & Results</h3>
+                </div>
+                <span class="phase-label" data-phase="post">Post-Election</span>
+                <span class="timeline-expand-icon" aria-hidden="true">▼</span>
+              </div>
+              <p class="timeline-card-subtitle">Votes are counted and winners are declared.</p>
+              <div class="timeline-card-body">
+                <p>On counting day, EVM votes are tallied round by round. VVPAT slips from randomly selected booths are cross-verified. Results are announced constituency-wise and the party/alliance with majority forms the government.</p>
+                <ul>
+                  <li>Round-by-round EVM counting</li>
+                  <li>VVPAT verification of random booths</li>
+                  <li>Results declared by Returning Officer</li>
+                  <li>Government formation process begins</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Eligibility Checker Section ────────────────────────── -->
+    <section class="eligibility-section" id="eligibility">
+      <div class="container">
+        <div class="reveal" style="text-align:center;">
+          <span class="section-label">Quick Check</span>
+          <h2>Are You <span class="gradient-text">Eligible to Vote</span>?</h2>
+          <p style="color:var(--text-secondary); max-width:500px; margin:var(--space-sm) auto 0; font-size:0.92rem;">
+            Answer a few simple questions to find out if you can exercise your democratic right.
+          </p>
+        </div>
+
+        <div class="eligibility-grid reveal">
+          <form class="eligibility-form glass" id="eligibility-form" aria-label="Voter eligibility checker">
+            <div class="form-group">
+              <label for="elig-age">Your Age</label>
+              <input type="number" id="elig-age" placeholder="e.g. 21" min="1" max="150" required />
+            </div>
+            <div class="form-group">
+              <label for="elig-citizen">Are you a citizen of the country?</label>
+              <select id="elig-citizen" required>
+                <option value="">— Select —</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="elig-registered">Are you registered as a voter?</label>
+              <select id="elig-registered" required>
+                <option value="">— Select —</option>
+                <option value="yes">Yes, I have a Voter ID</option>
+                <option value="no">No, not yet</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;">Check My Eligibility</button>
+          </form>
+
+          <div class="eligibility-result glass result-pending" id="eligibility-result">
+            <div class="result-icon" aria-hidden="true">🗳️</div>
+            <div class="result-title">Ready to Check?</div>
+            <p class="result-message">Fill in your details on the left and hit the button to find out your voting eligibility instantly.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Chat Section ───────────────────────────────────────── -->
+    <section class="chat-section" id="chat">
+      <div class="container">
+        <div class="reveal" style="text-align:center;">
+          <span class="section-label">AI Assistant</span>
+          <h2>Ask <span class="gradient-text">ElectionGuide AI</span></h2>
+          <p style="color:var(--text-secondary); max-width:540px; margin:var(--space-sm) auto 0; font-size:0.92rem;">
+            Got questions about elections, voting, or your rights? Our AI assistant has the answers — powered by Google Gemini.
+          </p>
+        </div>
+
+        <div class="chat-container reveal">
+          <div class="chat-window glass" id="chat-window" role="log" aria-live="polite" aria-label="Chat messages">
+            <div class="chat-welcome" style="text-align:center; padding:var(--space-2xl) var(--space-lg); color:var(--text-muted);">
+              <div style="font-size:3rem; margin-bottom:var(--space-md);">🗳️</div>
+              <h3 style="color:var(--text-primary); margin-bottom:var(--space-sm);">Welcome to ElectionGuide AI</h3>
+              <p style="font-size:0.85rem; max-width:360px; margin:0 auto;">
+                Ask me anything about elections, voting processes, voter eligibility, or democratic rights. Works instantly in Demo mode — toggle to Live for real-time AI!
+              </p>
+            </div>
+          </div>
+
+          <div class="chat-input-bar glass" role="form" aria-label="Chat input">
+            <button class="btn-icon" id="chat-mic" onclick="toggleVoice()" aria-label="Start voice input" title="Voice input">🎤</button>
+            <input type="text" id="chat-input" placeholder="Ask about elections, voting, rights…" aria-label="Type your question" autocomplete="off" />
+            <button class="btn-icon" id="chat-send" aria-label="Send message" title="Send">➤</button>
+          </div>
+
+          <div class="chat-suggestions">
+            <button class="chip" onclick="sendMessage('How do I register to vote?')">📋 How to register?</button>
+            <button class="chip" onclick="sendMessage('What is an EVM and how does it work?')">🖥️ What is an EVM?</button>
+            <button class="chip" onclick="sendMessage('What is NOTA and when can I use it?')">🚫 What is NOTA?</button>
+            <button class="chip" onclick="sendMessage('Explain the Model Code of Conduct')">📜 Code of Conduct</button>
+            <button class="chip" onclick="sendMessage('What are the types of elections in India?')">🏛️ Types of Elections</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── FAQ Section ────────────────────────────────────────── -->
+    <section class="faq-section" id="faq">
+      <div class="container">
+        <div class="reveal" style="text-align:center;">
+          <span class="section-label">Common Questions</span>
+          <h2>Frequently <span class="gradient-text">Asked Questions</span></h2>
+        </div>
+
+        <div class="faq-list reveal">
+          <div class="faq-item glass">
+            <button class="faq-question" aria-expanded="false">
+              <span>What is the minimum age to vote in India?</span>
+              <span class="faq-chevron" aria-hidden="true">▼</span>
+            </button>
+            <div class="faq-answer" role="region">
+              <div class="faq-answer-content">
+                The minimum age to vote in India is <strong>18 years</strong>. Any citizen who has attained the age of 18 on or before the qualifying date (1st January of the year of revision of the electoral roll) is eligible to register as a voter.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item glass">
+            <button class="faq-question" aria-expanded="false">
+              <span>How do I get a Voter ID card?</span>
+              <span class="faq-chevron" aria-hidden="true">▼</span>
+            </button>
+            <div class="faq-answer" role="region">
+              <div class="faq-answer-content">
+                You can apply for a Voter ID (EPIC) online through the <strong>National Voters' Service Portal (NVSP)</strong> at nvsp.in or the Voter Helpline App. Fill Form 6 with your details, upload proof of age, address, and photograph.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item glass">
+            <button class="faq-question" aria-expanded="false">
+              <span>What is NOTA and how does it work?</span>
+              <span class="faq-chevron" aria-hidden="true">▼</span>
+            </button>
+            <div class="faq-answer" role="region">
+              <div class="faq-answer-content">
+                <strong>NOTA (None of the Above)</strong> allows voters to officially reject all candidates. Introduced by the Supreme Court in 2013, it's the last button on the EVM. Even if NOTA gets the highest votes, the leading candidate still wins.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item glass">
+            <button class="faq-question" aria-expanded="false">
+              <span>What is the Model Code of Conduct?</span>
+              <span class="faq-chevron" aria-hidden="true">▼</span>
+            </button>
+            <div class="faq-answer" role="region">
+              <div class="faq-answer-content">
+                The <strong>Model Code of Conduct (MCC)</strong> is a set of guidelines by the Election Commission to ensure free and fair elections. It takes effect from the date of election announcement until results are declared.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item glass">
+            <button class="faq-question" aria-expanded="false">
+              <span>Can I vote if I'm away from my registered constituency?</span>
+              <span class="faq-chevron" aria-hidden="true">▼</span>
+            </button>
+            <div class="faq-answer" role="region">
+              <div class="faq-answer-content">
+                Currently, you must vote at your assigned polling station. If you've moved, apply to transfer your registration. Service voters, overseas electors, and election duty personnel can use <strong>postal ballots</strong>.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item glass">
+            <button class="faq-question" aria-expanded="false">
+              <span>What is an EVM and is it tamper-proof?</span>
+              <span class="faq-chevron" aria-hidden="true">▼</span>
+            </button>
+            <div class="faq-answer" role="region">
+              <div class="faq-answer-content">
+                An <strong>EVM</strong> is a portable electronic device with no network connectivity. Manufactured by BEL and ECIL with strict security. <strong>VVPAT</strong> adds transparency by printing a paper slip of each vote for verification.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ─── Footer ─────────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="container">
+      <p>
+        Built with ❤️ for democracy &nbsp;•&nbsp; Powered by <a href="https://ai.google.dev/" target="_blank" rel="noopener">Google Gemini AI</a>
+        &nbsp;•&nbsp; ElectionGuide AI &copy; 2026
+      </p>
+      <p style="margin-top:var(--space-sm); font-size:0.7rem;">
+        This is an educational tool. Always verify information with official sources like the <a href="https://eci.gov.in/" target="_blank" rel="noopener">Election Commission of India</a>.
+      </p>
+    </div>
+  </footer>
+
+  <!-- ─── API Key Modal (for Go Live) ────────────────────────── -->
+  <div class="modal-overlay" id="api-key-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal glass">
+      <h3 id="modal-title">🚀 Go Live with Gemini AI</h3>
+      <p>Enter your Google Gemini API key to switch from demo responses to real-time AI. Your key stays in your browser only.</p>
+      <input type="password" id="api-key-input" placeholder="Paste your Gemini API key…" aria-label="Gemini API key" />
+      <div class="modal-actions">
+        <button class="btn btn-primary" onclick="saveApiKey()">Activate Live Mode</button>
+        <button class="btn btn-secondary" onclick="closeApiKeyModal()">Stay in Demo</button>
+      </div>
+      <p style="font-size:0.72rem; margin-top:var(--space-md); color:var(--text-muted);">
+        Get a free API key at <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener" style="color:var(--saffron);">aistudio.google.com</a>
+      </p>
+    </div>
+  </div>
+
+  <script src="app.js?v=2"></script>
+</body>
+</html>
