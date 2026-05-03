@@ -1,0 +1,40 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build output
+dist/
+build/
+
+# Coverage reports
+coverage/
+html/
+
+# Local env files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+vitest.log*
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Antigravity / AI artifacts (optional but keeps repo clean)
+.gemini/
+implementation_plan.md
+task.md
+walkthrough.md
+*.png
+*.jpg
+*.jpeg
+*.mp4
+*.webp

@@ -1,0 +1,57 @@
+Here's what I shipped 👇
+
+🔗 Live Demo: https://electionguide-ai-235766108839.asia-south1.run.app
+
+"The problem with elections isn't the voting—it's understanding the process."
+
+For millions of first-time voters, the democratic process can feel like a maze of complex regulations, scattered information, and overwhelming jargon. How do I register? What is an EVM? What exactly is the Model Code of Conduct?
+
+Enter ElectionGuide AI — a premium, AI-powered civic education assistant designed to turn electoral confusion into citizen empowerment.
+
+--------------------------------------------------
+
+🤖 YOUR PERSONAL DEMOCRATIC CONCIERGE
+
+Imagine an assistant that doesn't just "search" but actually explains the democratic pulse in simple, engaging language.
+
+🔹 "How do I register to vote for the first time?"
+🔹 "What is NOTA and when should I use it?"
+🔹 "Can you explain the election timeline from announcement to results?"
+
+Powered by Google Gemini 2.0 Flash, ElectionGuide AI provides non-partisan, factual, and instant answers to help you navigate your rights and responsibilities.
+
+--------------------------------------------------
+
+📍 NEW: ZERO-CONFIG RESOURCE LOCATOR
+
+Finding your nearest polling station or registration office shouldn't require an API key. We've integrated Leaflet and OpenStreetMap to provide a privacy-focused, zero-configuration map. No hurdles, no setup—just open the app and find the help you need.
+
+--------------------------------------------------
+
+✅ INTERACTIVE ELIGIBILITY & TIMELINE
+
+Stop guessing and start knowing.
+👉 Eligibility Checker: A simple, 3-step tool to verify if you meet the age, citizenship, and registration requirements.
+👉 Visual Timeline: A beautiful, interactive journey through the election cycle, ensuring you never miss a milestone.
+
+--------------------------------------------------
+
+🚀 MODERN TECH STACK FOR CIVIC GOOD
+
+To ensure high performance and accessibility, we built ElectionGuide AI as a modular Progressive Web App (PWA):
+
+⭐ Google Gemini 2.0 Flash: The brain providing contextual and safe Q&A.
+⭐ Leaflet + OpenStreetMap: Open-source mapping for local resources.
+⭐ Firebase Auth: Secure, one-tap login for your voter dashboard.
+⭐ Vitest: Professional-grade testing with 17+ automated tests.
+⭐ PWA: Installable on any phone, working offline for critical info.
+
+--------------------------------------------------
+
+💡 INSIGHT: KNOWLEDGE IS THE ULTIMATE VOTE
+
+ElectionGuide AI isn't just an app; it's a bridge between the citizen and the state. By making complex info accessible and friendly, we’re strengthening the foundation of democracy itself.
+
+Built for the future of civic tech. Empowering the voters of today. 🗳️🇮🇳🌎
+
+#ElectionGuideAI #CivicTech #GoogleGemini #Democracy #AI #OpenSource #PWA #Innovation #VoterAwareness

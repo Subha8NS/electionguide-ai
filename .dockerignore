@@ -1,6 +1,7 @@
-.git
-.gitignore
-README.md
-*.md
-.DS_Store
 node_modules
+.git
+tests
+*.test.js
+vite.config.js
+.dockerignore
+venv

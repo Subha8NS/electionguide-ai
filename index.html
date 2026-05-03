@@ -41,7 +41,9 @@
         <a href="#hero" role="menuitem">Home</a>
         <a href="#timeline" role="menuitem">Timeline</a>
         <a href="#eligibility" role="menuitem">Eligibility</a>
+        <a href="#resources" role="menuitem">Resources</a>
         <a href="#chat" role="menuitem">Ask AI</a>
+
         <a href="#faq" role="menuitem">FAQ</a>
       </div>
 
@@ -372,7 +374,25 @@
       </div>
     </section>
 
+    <!-- ─── Locate Resources Section (Leaflet + OpenStreetMap) ──── -->
+    <section class="map-section" id="resources">
+      <div class="container">
+        <div class="reveal" style="text-align:center;">
+          <span class="section-label">Find Help</span>
+          <h2>Locate <span class="gradient-text">Election Resources</span></h2>
+          <p style="color:var(--text-secondary); max-width:540px; margin:var(--space-sm) auto 0; font-size:0.92rem;">
+            Find your nearest polling station, electoral registration office, or help center on the map.
+          </p>
+        </div>
+
+        <div class="map-container reveal glass" style="margin-top:var(--space-2xl); height:450px; overflow:hidden; border-radius:var(--radius-lg);">
+          <div id="election-map" style="width:100%; height:100%; border-radius:var(--radius-lg);"></div>
+        </div>
+      </div>
+    </section>
+
     <!-- ─── FAQ Section ────────────────────────────────────────── -->
+
     <section class="faq-section" id="faq">
       <div class="container">
         <div class="reveal" style="text-align:center;">
@@ -487,6 +507,6 @@
     </div>
   </div>
 
-  <script src="app.js?v=2"></script>
+  <script type="module" src="src/main.js"></script>
 </body>
 </html>
